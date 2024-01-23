@@ -32,5 +32,9 @@ upload(req,res, async(err)=>
      await std.save()
     res.send("File Uploaded")
 })
+app.get("/",async(req,res)=>{
+    const data=student.find()
+    res.send(data)
+})
 
 }).listen(4000)
