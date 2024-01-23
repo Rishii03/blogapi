@@ -27,14 +27,16 @@ upload(req,res, async(err)=>
 {
     const std=new student({
         name:req.body.name,
-        image:"https://blogapi-3vfy.onrender.com/uploads/"+req.file.filename
+        image:"localhost:4000/uploads/"+req.file.filename
     })
      await std.save()
     res.send("File Uploaded")
 })
+
+
+})
 app.get("/",async(req,res)=>{
-    const data= await student.find()
+    const data=await student.find()
     res.send(data)
 })
-
-}).listen(4000)
+app.listen(4000)
