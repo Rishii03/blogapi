@@ -27,7 +27,7 @@ upload(req,res, async(err)=>
 {
     const std=new student({
         name:req.body.name,
-        image:"localhost:4000/uploads/"+req.file.filename
+        image:"https://blogapi-3vfy.onrender.com/uploads/"+req.file.filename
     })
      await std.save()
     res.send("File Uploaded")
