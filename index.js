@@ -44,13 +44,13 @@ app.get("/",async(req,res)=>{
     res.send(data)
 })
 //update blog
-app.put("/",async(req,res)=>{
-    const data=await student.updateOne({id:req.body.id},{$set:{name:req.body.name}})
+app.put("/",upload,async(req,res)=>{
+    const data=await student.updateOne({bid:req.body.bid},{$set:{bname:req.body.bname}})
     res.send(data)
 })
 //delete blog
 app.delete("/",async(req,res)=>{
-    const data=await student.deleteOne({id:req.body.id})
+    const data=await student.deleteOne({bid:req.body.bid})
     res.send(data)
 })
 app.listen(4000)
