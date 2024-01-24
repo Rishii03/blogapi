@@ -17,8 +17,8 @@ const storage=multer.diskStorage({
         cb(null,file.originalname);
     }
 });
-const upload = multer({storage:storage}).single("Image");
-
+const upload = multer({storage:storage}).single("bimage");
+//create blog
 app.post("/",async(req,res)=>{
     // const data=new student(req.body)
     // const result=await data.save()
@@ -26,8 +26,11 @@ app.post("/",async(req,res)=>{
 upload(req,res, async(err)=>
 {
     const std=new student({
-        name:req.body.name,
-        image:"https://blogapi-3vfy.onrender.com/uploads/"+req.file.filename
+        bid:req.body.id,
+        bname:req.body.name,
+        bdesc:req.body.bdesc,
+        bcat:req.body.bcat,
+        bimage:"https://blogapi-3vfy.onrender.com/uploads/"+req.file.filename
     })
      await std.save()
     res.send("File Uploaded")
@@ -35,8 +38,19 @@ upload(req,res, async(err)=>
 
 
 })
+//see all blog
 app.get("/",async(req,res)=>{
     const data=await student.find()
+    res.send(data)
+})
+//update blog
+app.put("/",async(req,res)=>{
+    const data=await student.updateOne({id:req.body.id},{$set:{name:req.body.name}})
+    res.send(data)
+})
+//delete blog
+app.delete("/",async(req,res)=>{
+    const data=await student.deleteOne({id:req.body.id})
     res.send(data)
 })
 app.listen(4000)
