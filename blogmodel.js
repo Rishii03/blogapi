@@ -1,7 +1,7 @@
 const mongoose= require("mongoose");
 const blogSchema = new mongoose.Schema({
  //b=blog=>
- bid:Number,
+bid:Number,
 bname:String,
 bdesc:String,
 bcat:String,

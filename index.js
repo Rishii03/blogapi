@@ -26,8 +26,8 @@ app.post("/",async(req,res)=>{
 upload(req,res, async(err)=>
 {
     const std=new student({
-        bid:req.body.id,
-        bname:req.body.name,
+        bid:req.body.bid,
+        bname:req.body.bname,
         bdesc:req.body.bdesc,
         bcat:req.body.bcat,
         bimage:"https://blogapi-3vfy.onrender.com/uploads/"+req.file.filename
